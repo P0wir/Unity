@@ -102,14 +102,17 @@ public class EnemyStats : MonoBehaviour
 
     private void BossKill()
     {
+        GrantExpToPlayer();
+
         if (gameObject.layer == LayerMask.NameToLayer("SpecialBoss")) 
         {
             GameManager gameManager = FindObjectOfType<GameManager>();
             if (gameManager != null)
             {
-                gameManager.BossKilled(); 
+                gameManager.BossKilled();
+                Debug.Log("BossKilled called in GameManager.");
             }
         }
-        Destroy(gameObject);
+    Destroy(gameObject);
     }
 }
