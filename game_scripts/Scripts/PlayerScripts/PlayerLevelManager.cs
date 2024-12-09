@@ -79,7 +79,7 @@ public class PlayerLevelManager : MonoBehaviour
         if (levelUpText != null)
         {
             levelUpText.gameObject.SetActive(true);
-            levelUpText.text = $"Level Up! Stats increased by 10%";
+            levelUpText.text = $" Level {currentLevel}! Stats increased by 10%";
 
             Invoke("HideLevelUpNotification", 2f);
         }

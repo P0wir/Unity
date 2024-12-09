@@ -61,8 +61,15 @@ public class EnemyStats : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Kill();
-        }
+            if (gameObject.layer == LayerMask.NameToLayer("SpecialBoss"))
+            {
+                BossKill();
+            }
+            else
+            {
+                Kill();
+            }
+        } 
     }
 
     public void Kill()
@@ -91,5 +98,18 @@ public class EnemyStats : MonoBehaviour
         {
             audioSource.PlayOneShot(clip);
         }
+    }
+
+    private void BossKill()
+    {
+        if (gameObject.layer == LayerMask.NameToLayer("SpecialBoss")) 
+        {
+            GameManager gameManager = FindObjectOfType<GameManager>();
+            if (gameManager != null)
+            {
+                gameManager.BossKilled(); 
+            }
+        }
+        Destroy(gameObject);
     }
 }
